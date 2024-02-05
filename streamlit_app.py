@@ -1,6 +1,8 @@
 import streamlit as st
 import time
 
+
+st.title("Gillian's pomodoro timer")
 def countdown(interval):
     progress_bar = st.progress(0)
     for i in range(interval, 0, -1):
