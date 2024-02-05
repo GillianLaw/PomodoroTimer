@@ -3,18 +3,30 @@ import time
 
 
 st.title("Gillian's pomodoro timer")
+# def countdown(interval):
+#     progress_bar = st.progress(0)
+#     total_seconds = interval * 60
+#     for i in range(total_seconds, 0, -1):
+#         minutes, seconds = divmod(i, 60)
+#         if minutes < 1:
+#             st.text(f'You have just {seconds} seconds to go')
+#         else:
+#             st.text(f'You have {minutes} minutes and {seconds} seconds to go')
+#         progress_bar.progress((total_seconds - i) / total_seconds)
+#         time.sleep(1)
 def countdown(interval):
     progress_bar = st.progress(0)
+    timer_text = st.empty()  # Create a placeholder for the timer text
     total_seconds = interval * 60
     for i in range(total_seconds, 0, -1):
         minutes, seconds = divmod(i, 60)
         if minutes < 1:
-            st.text(f'You have just {seconds} seconds to go')
+            timer_text.text(f'You have just {seconds} seconds to go')
         else:
-            st.text(f'You have {minutes} minutes and {seconds} seconds to go')
+            timer_text.text(f'You have {minutes} minutes and {seconds} seconds to go')
         progress_bar.progress((total_seconds - i) / total_seconds)
         time.sleep(1)
-
+        
 def main():
     total_duration = st.number_input("Enter total duration", min_value=1, value=1, step=1)
     interval = st.number_input("Enter work interval", min_value=1, value=25, step=1)
